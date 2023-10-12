@@ -22,26 +22,24 @@ class MainActivity : AppCompatActivity() {
     }
     // create binding
     private lateinit var binding: ActivityMainBinding
-    //
+    //using registerForActivityResult
     private val startActivityForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){result ->
 
         if(result.resultCode==Activity.RESULT_OK && result.data !=null){
-            val selectedFileUri = result.data?.data
+            val selectedFileUri = result.data?.data // get uri
             Intent(applicationContext,EditImageActivity::class.java).also {
+                //put uri to intent
                     editImageIntent->editImageIntent.putExtra(KEY_IMAGE_URI,selectedFileUri.toString())
                     startActivity(editImageIntent)
             }
-
         }
-
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding =ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        setListeners()
+        setContentView(binding.root);
+        setListeners();
     }
-
     private fun setListeners() {
         binding.buttonEditNewImage.setOnClickListener{
             val intent:Intent=Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
