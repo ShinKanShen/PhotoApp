@@ -13,6 +13,9 @@
         android:theme="@style/Theme.PhotoApp"
         tools:targetApi="31">
         <activity
+            android:name=".SplashActivity"
+            android:exported="false" />
+        <activity
             android:name=".EditImageActivity"
             android:exported="false" />
         <activity

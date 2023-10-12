@@ -6,11 +6,11 @@ import android.net.Uri
 import android.os.Build
 import android.os.Build.VERSION.SDK_INT
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.example.photoapp.databinding.ActivityEditImageBinding
+import org.koin.android.ext.android.bind
 import kotlin.math.log
 
 
@@ -31,10 +31,11 @@ class EditImageActivity : AppCompatActivity() {
     private fun backButton() {
         binding.arrowBack.setOnClickListener{
             startActivity(Intent(applicationContext,MainActivity::class.java))
-            Log.d("back","hoan thanh")
+
         }
 
     }
+
 
     private fun displayImage() {
         // get image uri
